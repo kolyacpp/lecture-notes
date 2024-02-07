@@ -31,7 +31,9 @@ jobs:
           docker run -d -it --name alpine alpine:edge sh
           docker exec alpine sh -c \
             'echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-            && apk add rnote-cli'
+            && apk add rnote-cli \
+            font-terminus font-inconsolata font-dejavu font-noto font-noto-cjk font-awesome font-noto-extra \
+            font-vollkorn font-misc-cyrillic font-mutt-misc font-screen-cyrillic font-winitzki-cyrillic font-cronyx-cyrillic'
 
           rsync -rv --include '*/' --include '*.rnote' --exclude '*' --prune-empty-dirs --remove-source-files ./notes ./rnote
           docker cp rnote alpine:/
