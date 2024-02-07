@@ -33,7 +33,8 @@ jobs:
             'echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
             && apk add rnote-cli \
             font-terminus font-inconsolata font-dejavu font-noto font-noto-cjk font-awesome font-noto-extra \
-            font-vollkorn font-misc-cyrillic font-mutt-misc font-screen-cyrillic font-winitzki-cyrillic font-cronyx-cyrillic'
+            font-vollkorn font-misc-cyrillic font-mutt-misc font-screen-cyrillic font-winitzki-cyrillic font-cronyx-cyrillic \
+            font-freefont font-misc-misc font-opensans font-cantarell font-liberation'
 
           rsync -rv --include '*/' --include '*.rnote' --exclude '*' --prune-empty-dirs --remove-source-files ./notes ./rnote
           docker cp rnote alpine:/
