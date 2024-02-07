@@ -42,12 +42,12 @@ jobs:
           docker exec alpine rm -rf /rnote
           docker rm -f alpine
 
-      - name: Compress
+      - name: Copy pdfs
         run: |
           cd uncompressed
           rsync -av -f"+ */" -f"- *" . ../page/pdf
           find . -name "*.pdf" | cut -d / -f 2- | xargs -I {} \
-            convert -density 120x120 -quality 75 -compress jpeg {} ../page/pdf/{}
+            cp {} ../page/pdf/{}
           rm -rf $PWD
 
       - name: Merge
